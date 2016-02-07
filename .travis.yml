@@ -4,4 +4,4 @@ before_script:
     - curl -L "https://github.com/kward/shunit2/archive/source.tar.gz" | tar zx
 
 script:
-    - bash tests/sample_test.sh
+    - bash tests/authenticate_test.sh
