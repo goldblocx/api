@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/copernicusglobal/api.svg?branch=master)](https://travis-ci.org/copernicusglobal/api)
+
+
 # General Information
 
 Here we provide the information about Application Programming Interface (API) 
