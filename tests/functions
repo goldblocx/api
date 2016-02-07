@@ -1,0 +1,11 @@
+#! /bin/bash
+
+# Performs formatting for JSON response
+pretty() {
+ echo $1 | python -m json.tool | native2ascii -encoding UTF-8 -reverse
+}
+
+# Extracts the specified element from the JSON string
+jsn() {
+ cat <<< `cat | python -c 'import sys, json; j = json.load(sys.stdin)["'$1'"]; print json.dumps(j);' | native2ascii -encoding UTF-8 -reverse`
+}
