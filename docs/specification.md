@@ -27,3 +27,7 @@ For example:
 Also an appropriate http status code and JSON body are returned in the case of "Access denied" error (403 Forbidden) and "Internal server error" (500)
 
 All successful API responses contain the code 0 (means "success").
+
+# API Details:
+
+1. [User's Permissions](./roles.md)
