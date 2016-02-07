@@ -31,3 +31,5 @@ All successful API responses contain the code 0 (means "success").
 # API Details:
 
 1. [User's Permissions](./roles.md)
+2. [Copernicus Products](./products/products.md)
+  1. [Dealing with CG accounts](./products/accounts.md)
