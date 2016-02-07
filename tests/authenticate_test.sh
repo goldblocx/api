@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. functions
+. ./functions
 
 # /api/v1/otp  endpoint tests
 testOTP() {
