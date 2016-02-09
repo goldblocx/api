@@ -14,9 +14,9 @@ testOTP() {
    assertEquals 'The result is not OK' 0 $(echo $rs | jsn code)
    assertEquals 'The user is Active' '"Active"' $(echo $rs | jsn state)
 
-   jqq --version
+   jq --version
    
-   echo $rs | jqq
+   echo $rs | jq
 }
 
 # Performs the authentication for the demo user
