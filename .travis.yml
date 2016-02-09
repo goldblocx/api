@@ -2,7 +2,7 @@ language: bash
 
 before_install:
     - sudo apt-get -qq update
-    - sudo apt-get install -y jq
+    - sudo apt-get install -y jq=1.5
 
 before_script:
     - curl -L "https://github.com/kward/shunit2/archive/source.tar.gz" | tar zx
