@@ -3,8 +3,8 @@ os:
     
 language: bash
 
-before_install:
-    - brew install jq
+#before_install:
+#    - brew install jq
 
 before_script:
     - curl -L "https://github.com/kward/shunit2/archive/source.tar.gz" | tar zx
