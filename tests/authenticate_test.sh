@@ -37,6 +37,8 @@ testAuthentication() {
    #    "expires_in":1209599,
    #    "scope":"full",
    #    "client_id":"testapp"  }
+   
+   echo $rs | jq
     
    TOKEN=$(echo $rs | jq .access_token)
    
