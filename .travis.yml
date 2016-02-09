@@ -2,9 +2,9 @@ language: bash
 
 before_script:
     - curl -L "https://github.com/kward/shunit2/archive/source.tar.gz" | tar zx
-    - wget -O ./jqq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
-    - chmod +x ./jqq
-    - export PATH=$PATH:TRAVIS_BUILD_DIR:./
+    - wget -O ./jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+    - chmod +x ./jq
+    - export PATH=TRAVIS_BUILD_DIR:$PATH
 
 script:
     - bash tests/authenticate_test.sh
