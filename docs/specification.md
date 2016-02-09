@@ -32,4 +32,7 @@ All successful API responses contain the code 0 (means "success").
 
 1. [User's Permissions](./roles.md)
 2. [Copernicus Products](./products/products.md)
-  1. [Dealing with CG accounts](./products/accounts.md)
+  1. [Accounts](./products/accounts.md)
+  2. [Currency/Asset Exchange](./products/assets.md)
+  3. [Exchange Transaction](./products/exchangetransaction.md)
+3. [Customer Profiles](./profile/profiles.md)
