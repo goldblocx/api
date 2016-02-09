@@ -16,6 +16,7 @@ testOTP() {
    
    echo $rs | jq
    jq --version
+   ls
 }
 
 # Performs the authentication for the demo user
