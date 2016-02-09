@@ -1,5 +1,8 @@
 language: bash
 
+before_install:
+    - sudo apt-get install jq
+
 before_script:
     - curl -L "https://github.com/kward/shunit2/archive/source.tar.gz" | tar zx
 
