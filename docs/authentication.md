@@ -62,7 +62,8 @@ REFRESH=c01b926a-cf78-4b43-be92-5fe21ef712d0
 curl -X POST -d "grant_type=refresh_token&client_id=testapp&client_secret=secret&refresh_token=$REFRESH" https://testapi.copernicusgold.com/auth/oauth/token
 ```
 
-The result will be the same as above in the case of receiving the first access token.
+The result will be the same as above in the case of receiving the first access token. For more details, please take a look
+at [authentication tests](../tests/authenticate_test.sh)
 
 **Important**
 
