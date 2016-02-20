@@ -12,4 +12,4 @@ In the case when the "related_currency" and account's currency are not equal - t
 TOKEN="your access token here"
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"transaction_type" : "External", "external_channel" : "Card", "direction" : 0, "account" : {"id", 650650}, "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_number" : "1111111111111111"}  }' https://api.projectdgc.com/api/v1/transactions
 ```
-The same model is applied in case of editing a transaction but instead of a POST you need to use a PUT request (you need then specify the "id" field in a transaction model). All further processing stages (validation, sign, retrieving, deletion) currently the same as in case of general transaction (see Transactions).
+The same model is applied in case of editing a transaction but instead of a POST you need to use a PUT request (you need then specify the "**id**" field in a transaction model). All further processing stages (validation, sign, retrieving, deletion) currently the same as in case of general transaction (see Transactions).
