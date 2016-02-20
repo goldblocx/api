@@ -1,4 +1,4 @@
-# Creates a new transaction
+# Receiving money from a bank card
 
 The key attributes for this type of transaction are "transaction_type", "direction" and "external_channel". 
 The "transaction_type" must be specified as "External", the "external_channel" field must be equal to "Card" 
