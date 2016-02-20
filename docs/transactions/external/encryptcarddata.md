@@ -26,12 +26,12 @@ Library 'adyen.encrypt.nodom.min.js' used to encrypt card data:
             var ayden_card_encrypt_data = cseInstance.encrypt(cardData);
 </script>
 ```
-For params key and generationtime, use [info for encrypt card data](./infoforencryptcard.md)
+For params **key** and **generationtime**, use [info for encrypt card data](./infoforencryptcard.md)
 
-Use ayden_card_encrypt_data for card object in [receiving money from a bank card](./externaltransactionfromcard.md).
+Use **ayden_card_encrypt_data** for card object in [receiving money from a bank card](./externaltransactionfromcard.md).
 
 
-For existing card only cvc and generationtime required:
+For existing card only **cvc** and **generationtime** required:
 ``` javascript
             var cardData = {
                     cvc : ...,
