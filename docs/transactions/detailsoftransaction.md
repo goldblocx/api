@@ -5,7 +5,7 @@ Returns a list of fields for a certain transaction.
 ### REQUEST:
        GET     /api/v1/transactions/:id
 ### ARGUMENTS:
-       **id** - the identifier of the transaction
+       id - the identifier of the transaction
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"

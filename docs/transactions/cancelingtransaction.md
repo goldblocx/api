@@ -4,7 +4,7 @@ This method allows to change the transaction's state from **Unconfirmed** to **C
 ### REQUEST:
        PUT     /api/v1/transactions/:id/cancel
 ### ARGUMENTS:
-       **id** is an obligate field passed as a part of the url.
+       id - is an obligate field passed as a part of the url.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"

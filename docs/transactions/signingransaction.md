@@ -4,7 +4,7 @@ First of all, this method changes the state of a transaction to '**Unconfirmed**
 ### REQUEST:
        PUT     /api/v1/transactions/:id/sign
 ### ARGUMENTS:
-       **id** is an mandatory field passed as a part of the url.
+       id - is an mandatory field passed as a part of the url.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"

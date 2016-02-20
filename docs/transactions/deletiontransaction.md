@@ -4,7 +4,7 @@ This method allows to delete a transaction which must be in '**New**' or '**Draf
 ### REQUEST:
        DELETE     /api/v1/transactions/:id
 ### ARGUMENTS:
-       **id** is an obligate field passed as a part of the url.
+       id - is an obligate field passed as a part of the url.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
