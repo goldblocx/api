@@ -1,6 +1,6 @@
 # Signing a transaction
 Requests user's approvement for a transaction
-First of all, this method changes the state of a transaction to 'Unconfirm' and sends a USSD query to the user's mobile phone
+First of all, this method changes the state of a transaction to '**Unconfirmed**' and sends a USSD query to the user's mobile phone
 ### REQUEST:
        PUT     /api/v1/transactions/:id/sign
 ### ARGUMENTS:

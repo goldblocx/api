@@ -56,10 +56,10 @@ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" http
 
 It's a list of transaction models each contains a set of fields. The transaction models fields:
 - **id** - identifier of a transaction
-- **created** - exact time of creation of the transaction and modified - the time of latest modifications
+- **created** - exact time of creation of the transaction and **modified** - the time of latest modifications
 - **details** - information about this money transfer
 - **amount** - amount of money to be sent or received
 - **account** - details of own account used in the transaction
 - **contact** - an address where you send or from where receive the money, **contact_type** - type of the address (Phone, Email)
-- **state** - a status of the transaction (**Completed, Cancelled**) and state_changed - the time when the currenct state was set
+- **state** - a status of the transaction (**Completed, Cancelled**) and **state_changed** - the time when the currenct state was set
 - **direction** - a direction of money sending (0 - for outgoing transactions, 1 - for incoming ones)

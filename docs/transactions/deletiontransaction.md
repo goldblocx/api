@@ -1,10 +1,10 @@
 # Deletion a transaction
 Deletes a transaction without ability to restore
-This method allows to delete a transaction which must be in 'New' or 'Draft' states. If the transaction has another state, the 403 error will be raised. The result of the operation is a full set of the fields which the transaction has before deletion.
+This method allows to delete a transaction which must be in '**New**' or '**Draft**' states. If the transaction has another state, the 403 error will be raised. The result of the operation is a full set of the fields which the transaction has before deletion.
 ### REQUEST:
        DELETE     /api/v1/transactions/:id
 ### ARGUMENTS:
-       id is an obligate field passed as a part of the url.
+       **id** is an obligate field passed as a part of the url.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"

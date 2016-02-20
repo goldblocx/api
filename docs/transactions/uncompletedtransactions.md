@@ -38,4 +38,4 @@ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" http
 ]
 ```
 
-The fields in the provided transaction model are the same as for list of confirmed transactions but with small difference: the direction field is always 0 (because we deal with outgoing transactions only) and the state field can be New, Draft, Validate, Unconfirmed and Confirmed.
+The fields in the provided transaction model are the same as for list of confirmed transactions but with small difference: the direction field is always 0 (because we deal with outgoing transactions only) and the state field can be **New**, **Draft**, **Validate**, **Unconfirmed** and **Confirmed**.

@@ -29,4 +29,4 @@ curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H
   "modified": "2015-05-13T14:36:53.280+0000"
 }
 ```
-The fields in the provided transaction model are the same as for lists of transactions (see above). Each modification sets the currenct state of a transaction to be 'Draft'.
+The fields in the provided transaction model are the same as for lists of transactions (see above). Each modification sets the currenct state of a transaction to be '**Draft**'.

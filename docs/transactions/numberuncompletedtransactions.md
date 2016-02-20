@@ -1,6 +1,6 @@
 # Number of Uncompleted transactions
 A number of uncompleted transactions
-Returns amount of uncompleted transactions for the current customer.
+Returns amount of **uncompleted** transactions for the current customer.
 ### REQUEST:
        GET     /api/v1/transactions/notcompleted/count
 ### ARGUMENTS:

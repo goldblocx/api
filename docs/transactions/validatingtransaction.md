@@ -1,10 +1,10 @@
 # Validating a transaction
 Changes the transaction's state to 'Validate'
-This method allows to change the transaction's state (if it is in Draft or New state). This state transitions is allowed for 'New' and 'Draft' states only. For other states an error will be generated (like  {"code" : "-1", "message" : "Transaction state is invalid"}).
+This method allows to change the transaction's state (if it is in **Draft** or **New** state). This state transitions is allowed for '**New**' and '**Draft**' states only. For other states an error will be generated (like  {"code" : "-1", "message" : "Transaction state is invalid"}).
 ### REQUEST:
        PUT     /api/v1/transactions/:id/validate
 ### ARGUMENTS:
-       id is an obligate field passed as a part of the url.
+       **id** is an obligate field passed as a part of the url.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
