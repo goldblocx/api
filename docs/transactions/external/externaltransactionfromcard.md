@@ -79,7 +79,7 @@ The expected format for the "valid_thru" field is "MM/YY" - the month and year o
 The same model is applied in case of editing a transaction but instead of POST you need to use a PUT request 
 (you need then specify the "id" field in a transaction model). CARD DATA NOT SAVE on simple POST and PUT.
 
-Card data save only in PUT /api/v1/transactions/:id/validate
+# Card data save only in PUT /api/v1/transactions/:id/validate.
 For existing card "id" is required in card object  (Card is saved after successful transaction)
 ### REQUEST:
 

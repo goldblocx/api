@@ -1,5 +1,5 @@
 # Canceling a transaction
-Changes the transaction's state to 'Cancelled'
+Changes the transaction's state to '**Cancelled**'
 This method allows to change the transaction's state from **Unconfirmed** to **Cancelled**. For other states an error will be generated (like  {"code" : "-1", "message" : "Transaction state is invalid"}).
 ### REQUEST:
        PUT     /api/v1/transactions/:id/cancel
