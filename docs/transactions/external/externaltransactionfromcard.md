@@ -13,9 +13,9 @@ field value in "/api/v1/rates".
 
 ### ARGUMENTS:
 
-       request body: { "transaction_type" : "**External**", 
-                       "external_channel" : "**Card**", 
-                       "direction" : **1**, 
+       request body: { "transaction_type" : "External", 
+                       "external_channel" : "Card", 
+                       "direction" : 1, 
                        "account" : { "id":"..." , ...}, 
                        "amount" : "...", 
                        "related_currency" : {"value" : "..."}, 
