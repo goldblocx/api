@@ -30,7 +30,7 @@ field value in "/api/v1/rates".
 ```bash
 TOKEN="your access token here"
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" 
-     -d '{"transaction_type" : "External", "external_channel" : "Card","direction" : 1, "account" : {"id", 650650}, "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_bin" : "111111", "last_four_digits":"1111", "cardholder_name" : "John Smith", "valid_thru" : "09/18"}  }' https://api.projectdgc.com/api/v1/transactions
+     -d '{"transaction_type" : "External", "external_channel" : "Card","direction" : 1, "account" : {"id", 650650}, "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_bin" : "111111", "last_four_digits":"1111", "cardholder_name" : "John Smith", "valid_thru" : "09/2018"}  }' https://api.projectdgc.com/api/v1/transactions
 ```
 
 ### RESPONSE:
@@ -52,7 +52,7 @@ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -
         "card_bin":"411111",
         "last_four_digits":"1111",
         "cardholder_name": "John Smith",
-        "valid_thru": "09/18"
+        "valid_thru": "09/2018"
     },
     "code": 0,
     "created": "2015-08-10T03:53:28.549+0000",
@@ -75,7 +75,7 @@ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -
 
 
 The most of the fields are the same as for general transaction [see Transactions](../transactions.md). 
-The expected format for the "valid_thru" field is "MM/YY" - the month and year of card expiration.
+The expected format for the "valid_thru" field is "MM/YYYY" - the month and year of card expiration.
 The same model is applied in case of editing a transaction but instead of POST you need to use a PUT request 
 (you need then specify the "id" field in a transaction model). CARD DATA NOT SAVE on simple POST and PUT.
 

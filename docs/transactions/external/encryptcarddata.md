@@ -26,7 +26,9 @@ Library 'adyen.encrypt.nodom.min.js' used to encrypt card data:
             var ayden_card_encrypt_data = cseInstance.encrypt(cardData);
 </script>
 ```
-For params **key** and **generationtime**, use [info for encrypt card data](./infoforencryptcard.md)
+The expected format for the "expiryMonth" field is "MM".
+The expected format for the "expiryYear" field is "YYYY".
+For fields **key** and **generationtime**, use [info for encrypt card data](./infoforencryptcard.md)
 
 Use **ayden_card_encrypt_data** for card object in [receiving money from a bank card](./externaltransactionfromcard.md).
 
