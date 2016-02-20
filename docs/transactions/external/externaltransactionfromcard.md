@@ -80,8 +80,8 @@ The same model is applied in case of editing a transaction but instead of POST y
 (you need then specify the "id" field in a transaction model). CARD DATA NOT SAVE on simple POST and PUT.
 
 # Card data save only in PUT /api/v1/transactions/:id/validate.
-For existing card, '**id**' is required in card object  (Card is saved after successful transaction, for retrieving see [get cards](../../products/cards.md) )
-For '**encrypt_data**' in card object [see get encrypt data](./encryptcarddata.md)
+For existing card, '**id**' is required in card object. Card is saved after successful transaction, for retrieving cards see [get cards](../../products/cards.md).
+- For '**encrypt_data**' in card object [see get encrypt data](./encryptcarddata.md)
 ### REQUEST:
 
        PUT     /api/v1/transactions/:id/validate

@@ -1,8 +1,8 @@
 # Encrypt card data on client
 
-Library 'adyen.encrypt.nodom.min.js' used to encrypt card data.
-See https://github.com/Adyen/CSE-JS#javascript-only-integration
-and get https://github.com/Adyen/CSE-JS/blob/master/js/adyen.encrypt.nodom.js
+Library 'adyen.encrypt.nodom.min.js' used to encrypt card data:
+- see https://github.com/Adyen/CSE-JS#javascript-only-integration
+- get https://github.com/Adyen/CSE-JS/blob/master/js/adyen.encrypt.nodom.js
 ### EXAMPLE:
 ``` javascript
 
