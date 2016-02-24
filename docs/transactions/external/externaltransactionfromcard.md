@@ -30,7 +30,7 @@ field value in "/api/v1/rates".
 ```bash
 TOKEN="your access token here"
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" 
-     -d '{"transaction_type" : "External", "external_channel" : "Card","direction" : 1, "account" : {"id", 650650}, "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_bin" : "111111", "last_four_digits":"1111", "cardholder_name" : "John Smith", "valid_thru" : "09/2018"}  }' https://api.projectdgc.com/api/v1/transactions
+     -d '{"transaction_type" : "External", "external_channel" : "Card","direction" : 1, "account" : {"id", 650650}, "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_bin" : "111111", "last_four_digits":"1111", "cardholder_name" : "John Smith", "valid_thru" : "09/2018"}  }' https://testapi.copernicusgold.com/api/v1/transactions
 ```
 
 ### RESPONSE:

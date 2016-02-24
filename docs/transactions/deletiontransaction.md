@@ -8,7 +8,7 @@ This method allows to delete a transaction which must be in '**New**' or '**Draf
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions/4350
+curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions/4350
 ```
 ### RESPONSE:
 ```javascript

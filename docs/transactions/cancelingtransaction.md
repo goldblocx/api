@@ -8,7 +8,7 @@ This method allows to change the transaction's state from **Unconfirmed** to **C
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions/4350/cancel
+curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions/4350/cancel
 ```
 ### RESPONSE:
 ```javascript

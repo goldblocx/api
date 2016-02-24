@@ -9,7 +9,7 @@ Returns a list of fields for a certain transaction.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions/4851
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions/4851
 ```
 
 ### RESPONSE:
