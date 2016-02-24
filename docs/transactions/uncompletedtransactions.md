@@ -15,7 +15,7 @@ Returns a list of transactions which are not completed or not sent by user
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions/notcompleted?page=0&per_page=5
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions/notcompleted?page=0&per_page=5
 ```
 
 ### RESPONSE:

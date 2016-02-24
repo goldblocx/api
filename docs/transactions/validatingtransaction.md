@@ -8,7 +8,7 @@ This method allows to change the transaction's state (if it is in **Draft** or *
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions/4350/validate
+curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions/4350/validate
 ```
 ### RESPONSE:
 ```javascript

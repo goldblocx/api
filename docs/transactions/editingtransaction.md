@@ -8,7 +8,7 @@ This method allows to change transaction fields (if it is in **Draft** or **New*
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"id" : "3455", "amount":"5.003","details":"Invoce # 2433","contact_type" : "Phone","contact":"79122437136"}' https://api.projectdgc.com/api/v1/transactions
+curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"id" : "3455", "amount":"5.003","details":"Invoce # 2433","contact_type" : "Phone","contact":"79122437136"}' https://testapi.copernicusgold.com/api/v1/transactions
 ```
 ### RESPONSE:
 ```javascript

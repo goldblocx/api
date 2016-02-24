@@ -14,7 +14,7 @@ Returns a list of transactions available for the current customer.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions?page=0&per_page=5
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions?page=0&per_page=5
 ```
 
 ### RESPONSE:

@@ -8,7 +8,7 @@ This function allows to retrieve a list of all currencies which are available fo
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X GET -H "Accept: application/json" -H -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/currencies/fromcard
+curl -X GET -H "Accept: application/json" -H -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/currencies/fromcard
 ```
 ### RESPONSE:
 ```javascript

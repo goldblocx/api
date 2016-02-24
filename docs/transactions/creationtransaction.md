@@ -9,7 +9,7 @@ Creates a new transaction from JSON model of its fields. The current implementat
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"amount":"5.003","details":"Invoce # 2433","contact_type" : "Phone","contact":"79122437136"}' https://api.projectdgc.com/api/v1/transactions
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"amount":"5.003","details":"Invoce # 2433","contact_type" : "Phone","contact":"79122437136"}' https://testapi.copernicusgold.com/api/v1/transactions
 ```
 
 ### RESPONSE:

@@ -8,7 +8,7 @@ Returns amount of **uncompleted** transactions for the current customer.
 ### EXAMPLE:
 ```bash
 TOKEN="your access token here"
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://api.projectdgc.com/api/v1/transactions/notcompleted/count
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/transactions/notcompleted/count
 ```
 ### RESPONSE:
 2
