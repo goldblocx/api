@@ -22,5 +22,6 @@ headers).
 
 # API Specifications
 
-1. [Authentication](./docs/authentication.md)
-2. [API Reference](./docs/specification.md)
+1. [Registration own applications](./docs/applications/registration.md)
+2. [Authentication](./docs/authentication.md)
+3. [API Reference](./docs/specification.md)
