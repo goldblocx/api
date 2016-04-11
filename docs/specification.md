@@ -47,5 +47,5 @@ determine an concrete error.
 6. [Messages](./messages.md)
 7. [Creating Own Applications](./applications/applications.md)
   1. [Setting Own Fees](./applications/fees.md)
-  2. [Creating Assets/Currencies](./applications/fees.md)
+  2. [Creating Assets/Currencies](./applications/own_assets.md)
 
