@@ -70,5 +70,5 @@ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" http
 ```
 
 After that you can specify this address value in the field 'contact' and the field 'contact_type' to be 'Address'
-in [creation of a transaction](../transactions/createtransaction.md).
+in [creation of a transaction](../transactions/createtionransaction.md).
 
