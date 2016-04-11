@@ -4,14 +4,9 @@ Returns the current user's roles which can be used to restrict access in your in
 For example, the uses has not yet entered the password.
 
 ### REQUEST:
-
-```
     GET /api/v1/users/roles
-```       
-
 ### ARGUMENTS:
        none
-
 ### EXAMPLE
 
 ```bash

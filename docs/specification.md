@@ -43,8 +43,9 @@ determine an concrete error.
   1. [Accounts](./products/accounts.md)
   2. [Currency/Asset Exchange](./products/assets.md)
   3. [Exchange Transaction](./products/exchangetransaction.md)
-5. [Messages](./messages.md)
-6. [Creating Own Applications](./applications/applications.md)
+5. [Money Transfer, Depositing or Withdrawing Funds](./transactions/transactions.md)  
+6. [Messages](./messages.md)
+7. [Creating Own Applications](./applications/applications.md)
   1. [Setting Own Fees](./applications/fees.md)
   2. [Creating Assets/Currencies](./applications/fees.md)
 
