@@ -188,4 +188,4 @@ curl -X PUT -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com
 The response contains the data about the account which has been set. 
 
 *Be aware, if you have not set an account for some asset (currency), any corresponding transactions with this fee will
-not be unsuccessful.*
+be unsuccessful.*
