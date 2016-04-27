@@ -27,7 +27,7 @@ the value "ToCard" as the "product" field value in "/api/v1/rates".
 
 ```bash
 TOKEN="your access token here"
-MODEL='{ "transaction_type" : "External", "external_channel" : "Card", "direction" : 0, "account" : {"id", 650650}, \
+MODEL='{ "transaction_type" : "External", "external_channel" : "Card", "direction" : 0, "account" : {"id": "650650"}, \
          "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_bin" : "411111", "last_four_digits":"1111"}  }'
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d $MODEL https://testapi.copernicusgold.com/api/v1/transactions
 ```
