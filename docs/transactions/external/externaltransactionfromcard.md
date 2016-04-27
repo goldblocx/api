@@ -134,7 +134,7 @@ To link a transaction with a card you need to perform the 'validation' procedure
 
 ```bash
 TOKEN="your access token here"
-MODEL='{ "transaction_type" : "External", "external_channel" : "Card","direction" : 1, "account" : {"id", 650650}, \
+MODEL='{ "transaction_type" : "External", "external_channel" : "Card","direction" : 1, "account" : {"id": "650650"}, \
          "related_currency":{"value" : "EUR"}, "amount" : 100.00, 
          "card" : 
             {"card_bin" : "111111", "last_four_digits":"1111", "cardholder_name" : "John Smith", "valid_thru" : "09/18", 
