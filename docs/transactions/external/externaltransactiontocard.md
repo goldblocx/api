@@ -16,15 +16,19 @@ the value "ToCard" as the "product" field value in "/api/v1/rates".
    The request body: { 
                         "transaction_type" : "External", 
                         "external_channel" : "Card", 
-                        "direction" : 0, "account" : { "id" , ...}, "amount" : ...., 
-                        "related_currency" : {"value" : "..."}, "card" : {"card_number": "..." }  }
+                        "direction" : 0, 
+                        "account" : { "id" : "..." , ...}, 
+                        "amount" : "...", 
+                        "related_currency" : {"value" : "..."},                        
+                        "card" : { "card_bin": "...", "last_four_digits":"..."}
+                     }
 ```
 ### EXAMPLE:
 
 ```bash
 TOKEN="your access token here"
 MODEL='{ "transaction_type" : "External", "external_channel" : "Card", "direction" : 0, "account" : {"id", 650650}, \
-         "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_number" : "1111111111111111"}  }'
+         "related_currency":{"value" : "EUR"}, "amount" : 100.00, "card" : {"card_bin" : "411111", "last_four_digits":"1111"}  }'
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d $MODEL https://testapi.copernicusgold.com/api/v1/transactions
 ```
 
