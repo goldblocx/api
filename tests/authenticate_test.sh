@@ -8,7 +8,7 @@ source ./tests/functions
 testOTP() {
 
    # Using the DEMO login to see an example of response
-   rs=`curl -s -X PUT -d '{"login":"'$USER_DEMO'"}'  https://testapi.copernicusgold.com/api/v1/otp`
+   rs=`curl -s -X PUT -d '{"login":"'$USER_DEMO'"}'  https://$API_HOST/api/v1/otp`
 
    echo $rs | jq
 
@@ -27,7 +27,7 @@ testAuthentication() {
    buildBasic $APP_ID_DEMO $APP_SECRET_DEMO
 
    # Step 2. Using the demo account credentials to obtain a token
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://testapi.copernicusgold.com/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://$API_HOST/auth/oauth/token`
 
    # Returned something like:
 

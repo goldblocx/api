@@ -3,9 +3,9 @@
 source ./tests/functions
 
 #
-# Querying:  /api/v1/assets
+# Querying: /api/v1/assets
 #
-testGetAllAssets() {
+testCreatingAssets() {
 
    # Obtaining a DEMO token
    getTestToken
@@ -13,17 +13,45 @@ testGetAllAssets() {
    # Switching to a corporate entity
    switchToCorporate
 
-   # Querying available assets
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/assets`
+   # Creating an application
+   newApplication
    
-   echo "Found assets:"
+   # Creation of a new asset
+   MODEL='{"asset_code":"OIL", "description":"Oil Brent"}'
+   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" \
+                          https://$API_HOST/api/v1/assets  -d "$MODEL"`
+
+   echo "A created asset:"
    echo $rs | jq
 
-   # Querying available currencies (including public ones)
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/currencies`
+   assertEquals '"New"' $(echo $rs | jq .state)
+
+   # Trying to activate
+   ASSET_ID=$(echo $rs | jq .asset_id | trim)
    
-   echo "Found currencies:"
+   assertNotNull $ASSET_ID
+
+   MODEL='{}'
+   # For non-demo users this procedure is performed with USSD confirmation
+   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer $TOKEN" \
+                         https://$API_HOST/api/v1/assets/$ASSET_ID/activate  -d "$MODEL"`
+
    echo $rs | jq
+   assertEquals '"Active"' $(echo $rs | jq .state)
+
+   # Changing the capacity of the asset's network (the number of nodes in its blockchain storage)
+   CAPACITY=2
+   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer $TOKEN" \
+                         https://$API_HOST/api/v1/assets/$ASSET_ID/capacity/$CAPACITY  -d "$MODEL"`
+
+   echo $rs | jq
+   assertEquals '"Active"' $(echo $rs | jq .state)
+   #assertEquals '2' $(echo $rs | jq .capacity)
+   
+   removeApplication $APP_ID
 }
 
 . shunit2-source/2.1.6/src/shunit2

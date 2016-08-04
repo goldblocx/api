@@ -15,7 +15,7 @@ testCreateApplication() {
 
    # Creating an application
    MODEL='{}'
-   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/applications -d $MODEL`
+   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
    echo "Created App:"
    echo $rs | jq
 
@@ -32,18 +32,18 @@ testCreateApplication() {
    # Now trying to authenticate in the Application
    buildBasic $APP_ID $APP_SECRET
 
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://testapi.copernicusgold.com/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$API_HOST/auth/oauth/token`
 
    local TKN=$(echo $rs | jq .access_token | trim)
 
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TKN" https://testapi.copernicusgold.com/api/v1/users`
+   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TKN" https://$API_HOST/api/v1/users`
    
    # If all is OK
    assertEquals 0 $(echo $rs | jq .code)
    assertEquals '"demo"' $(echo $rs | jq .name)
 
    # Removing the application
-   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/applications/$APP_ID`
+   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$APP_ID`
    echo "Removing: $APP_ID"
    echo $rs | jq
 }
@@ -61,7 +61,7 @@ testUpdateApplication() {
 
    # Creating an application
    MODEL='{}'
-   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/applications -d $MODEL`
+   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
    echo "Created a new Application:"
    echo $rs | jq
 
@@ -70,7 +70,7 @@ testUpdateApplication() {
 
    # Changing the password (secret) and redirects
    MODEL='{"redirects":["http://localhost/login"], "app_secret":"'$APP_SECRET'", "app_id" : "'$APP_ID'"}'
-   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/applications -d "$MODEL"`
+   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d "$MODEL"`
    
    echo "Updated Application:"
    echo $rs | jq
@@ -78,18 +78,18 @@ testUpdateApplication() {
    # Now, trying to log in using the changed password   
    buildBasic $APP_ID $APP_SECRET
 
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://testapi.copernicusgold.com/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$API_HOST/auth/oauth/token`
 
    local TKN=$(echo $rs | jq .access_token | trim)
 
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TKN" https://testapi.copernicusgold.com/api/v1/users`
+   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TKN" https://$API_HOST/api/v1/users`
    
    # Checking the logging has been successful
    assertEquals 0 $(echo $rs | jq .code)
    assertEquals '"demo"' $(echo $rs | jq .name)
    
    # Removing the application
-   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/applications/$APP_ID`
+   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$APP_ID`
    echo "Removing: $APP_ID"  
 }
 
