@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/copernicusglobal/api.svg?branch=master)](https://travis-ci.org/copernicusglobal/api)
+[![Build Status](https://travis-ci.org/copernicusgold/api.svg?branch=master)](https://travis-ci.org/copernicusgold/api)
 
 
 # General Information
