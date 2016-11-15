@@ -1,7 +1,12 @@
 #! /bin/bash
 
-source ./tests/functions
+DIR=$(pwd)
 
-sh ./tests/authenticate_test.sh
-sh ./tests/applications_test.sh
-sh ./tests/assets_test.sh
+source $DIR/tests/functions
+
+echo "  xxx " | trim
+echo "$DIR"
+
+sh $DIR/tests/authenticate_test.sh
+sh $DIR/tests/applications_test.sh
+sh $DIR/tests/assets_test.sh
