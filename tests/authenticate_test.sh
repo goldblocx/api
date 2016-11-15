@@ -1,7 +1,5 @@
 #!/bin/sh
 
-source ./tests/functions
-
 #
 # Receives a one-time password: PUT /api/v1/otp
 #

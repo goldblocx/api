@@ -1,7 +1,5 @@
 #!/bin/sh
 
-source ./tests/functions
-
 #
 # Creates and activates a new asset: POST /api/v1/assets
 #

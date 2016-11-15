@@ -1,11 +1,11 @@
 #! /bin/bash
 
-APP_ID_DEMO='2b005ffe259546c9997d41ce33a21607'
-APP_SECRET_DEMO='f30cdb396d474afdaac806f52f4dedca'
-USER_DEMO='79999999999'
-USER_PWD_DEMO='1234'
-API_HOST=testapi.copernicusgold.com
-AUTH_HOST=testauth.copernicusgold.com
+export APP_ID_DEMO='2b005ffe259546c9997d41ce33a21607'
+export APP_SECRET_DEMO='f30cdb396d474afdaac806f52f4dedca'
+export USER_DEMO='79999999999'
+export USER_PWD_DEMO='1234'
+export API_HOST=testapi.copernicusgold.com
+export AUTH_HOST=testauth.copernicusgold.com
 
 #
 # Generating a value for Basic Authorization header
@@ -33,6 +33,7 @@ function buildBasic() {
       BASIC=`echo "$1:$2\c" | base64`
    fi
 }
+export -f buildBasic
 
 #
 # This function obtains a test access token using the demo credentials
@@ -52,10 +53,14 @@ function getTestToken() {
    echo "Obtained a token: $TOKEN"
 }
 
+export -f getTestToken
+
 # Removes both quotes
 function trim() {
     cat <<< `cat | sed -e 's/^"//' -e 's/"$//' -e 's/^\n//g'`
 }
+
+export -f trim
 
 #
 # Switching to a sample corporate entity
@@ -76,6 +81,8 @@ function switchToCorporate() {
     # Setting the current customer as the company The good company'
     rs=`curl -s -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/customers/$ID/current`
 }
+
+export -f switchToCorporate
 
 #
 # Creation of a sample application
@@ -105,6 +112,8 @@ function newApplication() {
    switchToCorporate
 }
 
+export -f newApplication
+
 #
 # Removing an application
 #
@@ -119,3 +128,5 @@ function removeApplication() {
    rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$1`
    echo "Removing: $1"  
 }
+
+export -f removeApplication
