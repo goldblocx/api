@@ -1,10 +1,11 @@
 #! /bin/bash
 
-APP_ID_DEMO='testapp'
-APP_SECRET_DEMO='secret'
+APP_ID_DEMO='2b005ffe259546c9997d41ce33a21607'
+APP_SECRET_DEMO='f30cdb396d474afdaac806f52f4dedca'
 USER_DEMO='79999999999'
 USER_PWD_DEMO='1234'
 API_HOST=testapi.copernicusgold.com
+AUTH_HOST=testauth.copernicusgold.com
 
 #
 # Generating a value for Basic Authorization header
@@ -45,7 +46,7 @@ function getTestToken() {
    buildBasic $APP_ID $APP_SECRET
 
    unset TOKEN
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://$API_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://$AUTH_HOST/auth/oauth/token`
 
    TOKEN=$(echo $rs | jq .access_token | trim)
    echo "Obtained a token: $TOKEN"
@@ -97,7 +98,7 @@ function newApplication() {
    # Now trying to authenticate in the Application
    buildBasic $APP_ID $APP_SECRET
 
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$API_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$AUTH_HOST/auth/oauth/token`
 
    TOKEN=$(echo $rs | jq .access_token | trim)
    

@@ -7,4 +7,4 @@ before_script:
     - export PATH=TRAVIS_BUILD_DIR:./:$PATH
 
 script:
-    - bash tests/authenticate_test.sh
+    - bash tests.sh

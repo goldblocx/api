@@ -3,12 +3,12 @@
 source ./tests/functions
 
 #
-# Retrieving OTP:  /api/v1/otp
+# Receives a one-time password: PUT /api/v1/otp
 #
 testOTP() {
 
-   # Using the DEMO login to see an example of response
-   rs=`curl -s -X PUT -d '{"login":"'$USER_DEMO'"}'  https://$API_HOST/api/v1/otp`
+   # Use the DEMO login to see an example of the response
+   rs=`curl -s -X PUT -d '{"login":"'$USER_DEMO'"}'  https://$AUTH_HOST/api/v1/otp`
 
    echo $rs | jq
 
@@ -17,19 +17,19 @@ testOTP() {
 }
 
 #
-# Performs the authentication and obtaining a token
+# Performs the authentication and obtains a token
 #
 testAuthentication() {
 
-   # Step 1. Generating the BASIC authentication header ( base64(app_id:app_secret) )
+   # Step 1. Generate a BASIC authentication header ( base64(app_id:app_secret) )
    # @see "functions" for details
    
    buildBasic $APP_ID_DEMO $APP_SECRET_DEMO
 
    # Step 2. Using the demo account credentials to obtain a token
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://$API_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://$AUTH_HOST/auth/oauth/token`
 
-   # Returned something like:
+   # Will be returned something like this:
 
    # {  "access_token":"9660fd9f-2e3b-46dd-9828-86eadf783b5e",
    #    "token_type":"bearer",
@@ -40,10 +40,11 @@ testAuthentication() {
 
    echo $rs | jq
 
+   # Extract the access token
    TOKEN=$(echo $rs | jq .access_token)
 
    assertNotNull $TOKEN
-   assertEquals '"testapp"' $(echo $rs | jq .client_id)
+   assertEquals '"'$APP_ID_DEMO'"' $(echo $rs | jq .client_id)
    assertTrue "[ $(echo $rs | jq .expires_in) -gt 0 ]"
 }
 
