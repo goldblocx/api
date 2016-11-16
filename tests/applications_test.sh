@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ./tests/functions
+
 #
 # Creates an application:  POST /api/v1/applications
 #
