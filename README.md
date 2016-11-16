@@ -12,7 +12,7 @@ digital assets.
 We use the OAuth2 authentication scheme that means you need an access token to work
 with the API queries (see the [Authentication](./docs/authentication.md) section).
 
-# API End-points
+# API Endpoints
 
 Currently, we use **https://testapi.copernicusgold.com/api/** as the **test** entry point for all API queries. In the
 production mode the main host should be change to 'api.copernicusgold.com' insead of 'testapi.copernicusgold.com'.
