@@ -1,27 +1,26 @@
 # General Concept
 
-The authentication in Copernicus Gold is based on [OAuth 2 protocol](https://tools.ietf.org/html/rfc6749) and provides two 
+The authentication procedure in Copernicus Gold is based on [OAuth 2 protocol](https://tools.ietf.org/html/rfc6749) and provides two 
 main abilities to obtain an access token: *the authorization code flow* (mostly used in web applications) and 
-*the resource password flow* (usually used in the applications which are not able to work with html view, for instance, mobile applications).
+*the resource password flow* (usually used in the applications which are unable to work with html view, for instance, mobile applications).
 
 First of all, you need app\_id and app\_secret values which are unique for your application. If you have a corporate
-account in Copernicus Gold (**CG**), you can create your [own CG application](./applications/registration.md) and obtain a pair app\_id/app\_secret. 
+account in Copernicus Gold (**CG**), you can create your [own CG application](./applications/registration.md) and get a pair app\_id/app\_secret. 
 
 The CG authentication cycle has a one principal distinction from other applications: the authentication 
-is based on usage of USSD service which interacts with your final user as a secondary authentication factor.
-(We could send SMS messages but decided to switch to more secured USSD messages).
+is based on the usage of the USSD service which interacts with your final user as a secondary authentication factor.
 
 # Authentication Code Flow
 
 This scenario is generally used in web applications because it requires interactive communication with the authentication
-server and browser redirections. To start the flow you need to configure a valid *redirect_url* parameter for your application.
-
+server and a user's browser. To start the flow you need to configure a valid *redirect_url* parameter for your application.
+(see [Applications](./applications/applications.md)
 
 # Resource Password Flow
 
-The main difference between this flow and the previous one is absence of interaction inside of browser. But still this
-authentication scheme requires at least two http requests to get the access token. The first one performs checking
-the provided phone number and sends an one-time password (the verification code) to the phone, which is required for 
+The main difference between this flow and the previous one is absence of interaction inside of a browser. But still this
+authentication scheme requires at least two http requests to get an access token. The first one performs checking
+the provided mobile phone number and sends an one-time password (a verification code) to the mobile phone, which is required for 
 further authentication.
 
 You need:
@@ -42,11 +41,11 @@ OTP_CODE="... otp code from above ..."
 curl -X POST -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$PHONE&password=$OTP_CODE&scope=full" https://testapi.copernicusgold.com/auth/oauth/token
 ```
 
-Here the 'username' is the user's mobile phone number and the 'password is the one-time password sent to you above. 
+Here the 'username' is a user's mobile phone number and the 'password is a one-time password sent to you above. 
 The example above will return something like this:
 
 ```javascript
-{ 
+{
   "access_token":"06935b2e-6639-4b49-8c8a-71452082a420",
   "token_type":"bearer",
   "refresh_token":"c01b926a-cf78-4b43-be92-5fe21ef712d0",
@@ -55,9 +54,10 @@ The example above will return something like this:
   "client_id":"testapp"}
 ```
 
-The provided access\_token will work during the next 1209600 seconds (2 week) and will expire after. By using the refresh\_token
+The provided access\_token will work in this example during the next 1209600 seconds (2 week) and will expire after. By using the given refresh\_token
 you can receive a new access_token. The expiration time of refresh_token is generally much longer than for the 
-access\_token (1 month to be exact).
+access\_token.
+
 Use the following query to get a new access token by the refresh\_token:
 
 ```bash
@@ -73,23 +73,23 @@ at [authentication tests](../tests/authenticate_test.sh)
 **Important**
 
 *The provided request gives you the tokens immediately but in the same time it sends a specific USSD menu to the specified 
-mobile phobe number and the user should enter the PIN code to get finally access to CG. 
+mobile phone number and the user should enter the PIN code to get access to CG. 
 This PIN code is always set during the initial registration in the system and the user knows it. 
-If the user tries to close the menu, it will be impossible to complete the authentication and the procedure must start
+If the user tries to close the menu due to some reasons, it will be impossible to complete the authentication and the procedure must start
 from the very beginning*.
  
 # Working With the Token
 
-Once you have got an access token you can invoke an API operation as http query providing the token value in the headers of the query. 
+Once you have received an access token you can invoke an API operation as http query providing the token value in the headers of the query. 
 For example:
 ```bash
 TOKEN=06935b2e-6639-4b49-8c8a-71452082a420
 curl -X GET -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/users/roles
 ```
 
-The last example will return something like 'ROLE\_USER'. But if a user didn't complete the authentication process 
-by entering the PIN code in USSD menu, this 'roles' query would return a role like 'ROLE\_EXPECT_PASSWORD' instead of 'ROLE\_USER'.
-Also without entering the PIN code all the API functions would return the **403 Forbidden Error** because the authentication 
+The last example will return something like 'ROLE\_USER'. But if the user didn't complete the authentication process 
+by entering the PIN code in the USSD menu, this 'roles' query would return a role like 'ROLE\_EXPECT_PASSWORD' instead of 'ROLE\_USER'.
+Also without entering the PIN code all the API functions return the **403 Forbidden Error** because the authentication 
 has not been completed yet.
  
 # Mobile Applications - the specific logins

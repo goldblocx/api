@@ -1,12 +1,13 @@
 # Building your own applications
 
-First of all, you need to create your own application and to receive a pair app\_id/app\_secret. The latter will be used
-to generate an oauth2 token to authenticate your users (see [Authentication](../authentication.md) ).
+First of all, you need to create your own application and to receive a pair app\_id/app\_secret. This pair will be used
+to generate an OAuth2 token to authenticate your users (see [Authentication](../authentication.md) ).
 
-To start you should perform registration as a user on the Copernicus Gold web application: https://testwebnew.copernicusgold.com and
-add a company in the system, because all applications must be linked to a corporate entity.
+To start you should perform registration as a user on the Copernicus Gold web application 
+(for testing we use https://testwebnew.copernicusgold.com ) and add a company in it, because all applications
+must be linked to a corporate entity.
 
-After completion the registration, you can see the DEV sub-menu item in the header menu of the web application (see the picture below).
+After completion the registration, you can see the DEV sub-menu item in the header menu of the web application, see the picture below:
 
 <img src="./dev.png" width=700 height=300 />
 

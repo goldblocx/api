@@ -4,17 +4,22 @@
 # General Information
 
 Here we provide the information about Application Programming Interface (API) 
-for Copernicus Gold services which enables you to create applications, to register users, to open accounts, to replenish
-them and, of course, to send money to other people, organizations, etc.
+for [Copernicus Gold](https://www.copernicusgold.com) services which enables you to create applications, to register users,
+to open accounts, to replenish those, to send money to other people, organizations and even to create own
+digital assets.
 
-We use the OAuth2 authentication scheme that means you need an access token to deal
-with the API queries.
 
-# API Endpoint
+We use the OAuth2 authentication scheme that means you need an access token to work
+with the API queries (see the [Authentication](./docs/authentication.md) section).
 
-Currently, we use **https://testapi.copernicusgold.com/api/** as the **test** entry point for all API queries.
+# API End-points
 
-All examples here for API were prepared with *cUrl* utility which can be downloaded from: http://curl.haxx.se/download.html.
+Currently, we use **https://testapi.copernicusgold.com/api/** as the **test** entry point for all API queries. In the
+production mode the main host should be change to 'api.copernicusgold.com' insead of 'testapi.copernicusgold.com'.
+
+All examples of the API here were prepared with *cUrl* utility that can be downloaded from: http://curl.haxx.se/download.html
+and usually is installed on most of OS platforms. The main reason to use it is to provide a clear way how exactly our
+REST API works and all 'curl' commands can be easily converted to any other languages. 
 
 API requests should use **https** and provide the content type as JSON (application/json) or XML (application/xml). 
 This depends on the headers "Accept" and "Content-Type" you use. The default type is JSON (if you didn't specify any

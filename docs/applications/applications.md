@@ -1,13 +1,14 @@
 # Application Concept
 
-Applications are a way to build your own services using the system and its abilities to store and to carry out
-financial transactions using different assets including those you have created for your own goals.
+Applications are a way to build your own services using Copernicus Gold and its abilities to store and to carry out
+financial transactions using different assets including those you create for your own aims.
 
 1. [Creating a new application](#creating-new-application)
 2. [Removing an Application](#removing-application)
 3. [Editing an Application](#editing-application)
 4. [Receiving Application Details](#getting-application-details)
 5. [Getting All Applications](#getting-all-applications)
+
 
 You can see some examples for these operations: [application_test](../../tests/applications_test.sh) 
 
@@ -50,13 +51,13 @@ curl -X POST -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.co
   }
 ```
 
-Now, you can provide for your clients the opportunity to login via your own application using the given app\_id and app\_secret.
+Now, you can provide for your clients the ability to login via your own application using the given app\_id and app\_secret.
 See, for example, [this test](../../tests/applications_test.sh)
 
 
 # Removing Application
 
-Performs removing of the specified application.
+Performs removing the specified application.
 
 ### REQUEST:
     DELETE /api/v1/applications/:app_id
@@ -89,7 +90,7 @@ In the response you can see the model of the application being removed.
 # Editing Application
 
 You can also modify application's attributes using PUT requests with the same model as for
-POST requests. The only difference is when you provide the app_secret value in the model you can
+POST requests. The only difference is when you provide an app_secret value in the model you can
 change the application's password.
 
 ### REQUEST:
@@ -160,7 +161,7 @@ In the response you can see the model of the application.
 
 # Getting All Applications
 
-Returns a list of all applications available for the current customer (must be a corporate entity).
+Returns a list of all applications available for the current customer who must be a corporate entity.
 
 ### REQUEST:
     GET /api/v1/applications
