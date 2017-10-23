@@ -15,10 +15,10 @@ You can see some examples for these operations: [application_test](../../tests/a
 
 # Creating New Application
 
-This operation allows you to create an application and to receive app\_id and app\_secret from the server, which can be used
-in the OAUTH2 [authentication procedure](../authentication.md).
+This operation allows you to create an application and to receive app\_id and app\_secret from the server which can be
+used in the OAUTH2 [authentication procedure](../authentication.md).
 
-**To perform the creation you need to be logged as a corporate customer.** 
+**To perform the creation you need to be logged in as a corporate customer.** 
 
 ### REQUEST:
     POST /api/v1/applications

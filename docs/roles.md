@@ -1,7 +1,7 @@
 # User Roles and Permissions
 
 Returns the current user's roles which can be used to restrict access in your interface according to user's permissions.
-For example, the uses has not yet entered the password.
+For example, if the user has not yet entered the password.
 
 ### REQUEST:
     GET /api/v1/users/roles
@@ -13,6 +13,7 @@ For example, the uses has not yet entered the password.
 TOKEN="your access token is here"
 curl -X GET -H "Authorization: Bearer $TOKEN" https://testapi.copernicusgold.com/api/v1/users/roles
 ```
+
 
 ### RESPONSE:
 1. ["ROLE\_USER"] - for a fully authenticated user

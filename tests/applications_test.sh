@@ -15,8 +15,9 @@ testCreateApplication() {
 
    # Create an application
    MODEL='{}'
-   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
-   echo "Created App:"
+   rs=`curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
+   echo "Created App: $rs"
    echo $rs | jq
 
    APP_ID=$(echo $rs | jq .app_id | trim)

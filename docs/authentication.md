@@ -1,31 +1,33 @@
 # General Concept
 
-The authentication procedure in Copernicus Gold is based on [OAuth 2 protocol](https://tools.ietf.org/html/rfc6749) and provides two 
-main abilities to obtain an access token: *the authorization code flow* (mostly used in web applications) and 
-*the resource password flow* (usually used in the applications which are unable to work with html view, for instance, mobile applications).
+The authentication procedure in Copernicus Gold is based on [OAuth 2 protocol](https://tools.ietf.org/html/rfc6749) and
+provides two main abilities to obtain an access token: *the authorization code flow* (mostly used in web applications)
+and *the resource password flow* (usually used in the applications which are unable to work with html view, for instance,
+mobile applications).
 
 First of all, you need app\_id and app\_secret values which are unique for your application. If you have a corporate
-account in Copernicus Gold (**CG**), you can create your [own CG application](./applications/registration.md) and get a pair app\_id/app\_secret. 
+account in Copernicus Gold (**CG**), you can create your [own CG application](./applications/registration.md) and get
+a pair app\_id/app\_secret.
 
-The CG authentication cycle has a one principal distinction from other applications: the authentication 
-is based on the usage of the USSD service which interacts with your final user as a secondary authentication factor.
+The CG authentication cycle has one principal distinction from other applications: the authentication is based on
+the usage of USSD or SMS services which interact with your final user as a secondary authentication factor.
 
 # Authentication Code Flow
 
 This scenario is generally used in web applications because it requires interactive communication with the authentication
-server and a user's browser. To start the flow you need to configure a valid *redirect_url* parameter for your application.
-(see [Applications](./applications/applications.md)
+server and the user's browser. To start the flow you need to configure a valid *redirect_url* parameter for your
+application. (see [Applications](./applications/applications.md)
 
 # Resource Password Flow
 
 The main difference between this flow and the previous one is absence of interaction inside of a browser. But still this
 authentication scheme requires at least two http requests to get an access token. The first one performs checking
-the provided mobile phone number and sends an one-time password (a verification code) to the mobile phone, which is required for 
+the provided mobile phone number and sends a one-time password (OTP) to the mobile phone, which is required for 
 further authentication.
 
 You need:
 
-### Querying a verification code
+### Querying an OTP
 ```bash
 curl -X PUT -d '{"login":"..phone number.."}'  https://testapi.copernicusgold.com/api/v1/otp
 ```
