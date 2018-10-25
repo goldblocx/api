@@ -1,2 +1,8 @@
-/.project
+/target
+
+/.settings
+.pmd
+.project
+.classpath
+*.log
 /shunit2-source/
