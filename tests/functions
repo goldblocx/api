@@ -1,9 +1,14 @@
 #! /bin/bash
 
+# Application ID and Application Secret
 export APP_ID_DEMO='2b005ffe259546c9997d41ce33a21607'
 export APP_SECRET_DEMO='f30cdb396d474afdaac806f52f4dedca'
+
+# Login/Password for a demo user 
 export USER_DEMO='79999999999'
 export USER_PWD_DEMO='1234'
+
+# Test endpoints
 export API_HOST=testapi.copernicusgold.com
 export AUTH_HOST=testauth.copernicusgold.com
 
@@ -25,13 +30,15 @@ function buildBasic() {
 
    unamestr=`uname`
 
-   unset BASIC
+   local BASIC
 
    if [[ "$unamestr" == 'Linux' ]]; then
       BASIC=`echo -n "$1:$2" | base64 -w 0`
    else
       BASIC=`echo "$1:$2\c" | base64`
    fi
+   
+   echo "$BASIC"
 }
 export -f buildBasic
 
@@ -44,13 +51,18 @@ function getTestToken() {
    APP_ID="$APP_ID_DEMO"
    APP_SECRET="$APP_SECRET_DEMO"
 
-   buildBasic $APP_ID $APP_SECRET
+   BASIC=$(buildBasic $APP_ID $APP_SECRET)
 
+   # It is a global variable
    unset TOKEN
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" https://$AUTH_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' \
+                       -H 'Content-Type: application/x-www-form-urlencoded' \
+                       -H "Authorization: Basic $BASIC" \
+                       -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" \
+                           https://$AUTH_HOST/auth/oauth/token`
 
    TOKEN=$(echo $rs | jq .access_token | trim)
-   echo "Obtained a token: $TOKEN"
+   echo "Obtained a test token: $TOKEN"
 }
 
 export -f getTestToken
@@ -68,18 +80,22 @@ export -f trim
 function switchToCorporate() {
 
     if [ -z $TOKEN ]; then
-        echo "A token not found"
+        echo "A token was not found, please authorize"
         exit 1
     fi
 
-    # First of all, obtaining the whole list of available clients
-    rs=`curl -s -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/customers`
+    # First of all, obtain the whole list of available clients
+    rs=`curl -s -X GET -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" \
+                           https://$API_HOST/api/v1/customers`
 
     # We have a demo corporate entity with the name 'The good company'
     ID=$(echo $rs | jq '.[] | select(.name == "The good company") | .id')
 
     # Setting the current customer as the company The good company'
-    rs=`curl -s -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/customers/$ID/current`
+    rs=`curl -s -X PUT -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" \
+                           https://$API_HOST/api/v1/customers/$ID/current`
 }
 
 export -f switchToCorporate
@@ -90,12 +106,16 @@ export -f switchToCorporate
 function newApplication() {
 
     if [ -z $TOKEN ]; then
-        echo "A token not found"
+        echo "A token not found, please authorize"
         exit 1
     fi
 
    MODEL='{}'
-   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
+   rs=`curl -s -X POST -H "Accept: application/json" \
+                       -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" \
+                       -d $MODEL \
+                           https://$API_HOST/api/v1/applications`
    echo "Created App:"
    echo $rs | jq
 
@@ -103,12 +123,15 @@ function newApplication() {
    APP_SECRET=$(echo $rs | jq .app_secret | trim)
 
    # Now trying to authenticate in the Application
-   buildBasic $APP_ID $APP_SECRET
+   BASIC=$(buildBasic $APP_ID $APP_SECRET)
 
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$AUTH_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' \
+                       -H 'Content-Type: application/x-www-form-urlencoded' \
+                       -H "Authorization: Basic $BASIC" \
+                       -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" \
+                           https://$AUTH_HOST/auth/oauth/token`
 
-   TOKEN=$(echo $rs | jq .access_token | trim)
-   
+   TOKEN=$(echo $rs | jq .access_token | trim)   
    switchToCorporate
 }
 
@@ -125,8 +148,11 @@ function removeApplication() {
    fi
 
    # Removing the application
-   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$1`
-   echo "Removing: $1"  
+   rs=`curl -s -X DELETE -H 'Accept: application/json' \
+                         -H 'Content-Type: application/json' \
+                         -H "Authorization: Bearer $TOKEN" \
+                             https://$API_HOST/api/v1/applications/$1`
+   echo "Removing the app: $1"
 }
 
 export -f removeApplication

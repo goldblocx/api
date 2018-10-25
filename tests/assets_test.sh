@@ -18,9 +18,11 @@ testAssetLifecycle() {
    
    # Creation of a new asset
    MODEL='{"asset_code":"OIL", "description":"Oil Brent"}'
-   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" \
+   rs=`curl -s -X POST -H "Accept: application/json" \
+                       -H "Content-Type: application/json" \
                        -H "Authorization: Bearer $TOKEN" \
-                          https://$API_HOST/api/v1/assets  -d "$MODEL"`
+                       -d "$MODEL" \
+                           https://$API_HOST/api/v1/assets`
 
    echo "Created a new asset:"
    echo $rs | jq
@@ -34,9 +36,11 @@ testAssetLifecycle() {
 
    MODEL='{}'
    # For non-demo users this procedure is finished by USSD confirmation
-   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" \
+   rs=`curl -s -X PUT -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
                       -H "Authorization: Bearer $TOKEN" \
-                         https://$API_HOST/api/v1/assets/$ASSET_ID/activate  -d "$MODEL"`
+                      -d "$MODEL" \
+                          https://$API_HOST/api/v1/assets/$ASSET_ID/activate`
 
    echo "Asset $ASSET_ID has been updated:"
    echo $rs | jq
@@ -47,9 +51,11 @@ testAssetLifecycle() {
    # Change the capacity of the asset's network (the number of nodes in its blockchain database)
    # Initially, all new assets have 2 nodes only.
    CAPACITY=2
-   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" \
+   rs=`curl -s -X PUT -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
                       -H "Authorization: Bearer $TOKEN" \
-                         https://$API_HOST/api/v1/assets/$ASSET_ID/capacity/$CAPACITY  -d "$MODEL"`
+                      -d "$MODEL" \
+                          https://$API_HOST/api/v1/assets/$ASSET_ID/capacity/$CAPACITY`
 
    echo "Capacity of $ASSET_ID changed to 2:"
    assertEquals '"Active"' $(echo $rs | jq .state)
@@ -57,17 +63,20 @@ testAssetLifecycle() {
    
    # Change the capacity to be 0 (i.e. drop all nodes)
    CAPACITY=0
-   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" \
+   rs=`curl -s -X PUT -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
                       -H "Authorization: Bearer $TOKEN" \
-                         https://$API_HOST/api/v1/assets/$ASSET_ID/capacity/$CAPACITY  -d "$MODEL"`
+                      -d "$MODEL" \
+                          https://$API_HOST/api/v1/assets/$ASSET_ID/capacity/$CAPACITY`
 
    echo "Capacity of $ASSET_ID changed to 0:"
    assertEquals '0' $(echo $rs | jq .capacity)
       
    # Remove the asset
-   rs=`curl -s -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" \
+   rs=`curl -s -X DELETE -H "Accept: application/json" \
+                         -H "Content-Type: application/json" \
                          -H "Authorization: Bearer $TOKEN" \
-                            https://$API_HOST/api/v1/assets/$ASSET_ID`
+                             https://$API_HOST/api/v1/assets/$ASSET_ID`
 
    echo "Asset $ASSET_ID removed"
    assertEquals '"Inactive"' $(echo $rs | jq .state)

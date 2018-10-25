@@ -15,9 +15,13 @@ testCreateApplication() {
 
    # Create an application
    MODEL='{}'
-   rs=`curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" \
-                       -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
-   echo "Created App: $rs"
+   rs=`curl -s -X POST -H "Accept: application/json" \
+                       -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" \
+                       -d "$MODEL" \
+                           https://$API_HOST/api/v1/applications`
+
+   echo "Created a new app: "
    echo $rs | jq
 
    APP_ID=$(echo $rs | jq .app_id | trim)
@@ -31,21 +35,32 @@ testCreateApplication() {
    assertEquals '"refresh_token"' $(echo $rs | jq '[.grant_types[]] | sort | .[2]')
 
    # Now try to authenticate in the created application
-   buildBasic $APP_ID $APP_SECRET
+   BASIC=$(buildBasic $APP_ID $APP_SECRET)
 
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$AUTH_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' \
+                       -H 'Content-Type: application/x-www-form-urlencoded' \
+                       -H "Authorization: Basic $BASIC" \
+                       -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" \
+                           https://$AUTH_HOST/auth/oauth/token`
 
    local TKN=$(echo $rs | jq .access_token | trim)
 
    # Check the details of the authenticated user
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TKN" https://$API_HOST/api/v1/users`
+   rs=`curl -s -X GET -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer $TKN" \
+                          https://$API_HOST/api/v1/users`
    
    # There must be the demo user
    assertEquals 0 $(echo $rs | jq .code)
    assertEquals '"demo"' $(echo $rs | jq .name)
 
    # Remove the application
-   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$APP_ID`
+   rs=`curl -s -X DELETE -H 'Accept: application/json' \
+                         -H 'Content-Type: application/json' \
+                         -H "Authorization: Bearer $TOKEN" \
+                             https://$API_HOST/api/v1/applications/$APP_ID`
+   
    echo "Removing: $APP_ID"
    echo $rs | jq
 }
@@ -63,7 +78,11 @@ testUpdateApplication() {
 
    # Create an application
    MODEL='{}'
-   rs=`curl -s -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d $MODEL`
+   rs=`curl -s -X POST -H "Accept: application/json" \
+                       -H "Content-Type: application/json" \
+                       -H "Authorization: Bearer $TOKEN" \
+                       -d  "$MODEL" \
+                           https://$API_HOST/api/v1/applications`
    echo "Created a new Application:"
    echo $rs | jq
 
@@ -72,33 +91,50 @@ testUpdateApplication() {
 
    # Change the password (secret) and the redirects parameter
    MODEL='{"redirects":["http://localhost/login"], "app_secret":"'$APP_SECRET'", "app_id" : "'$APP_ID'"}'
-   rs=`curl -s -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications -d "$MODEL"`
+   rs=`curl -s -X PUT -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer $TOKEN" \
+                      -d  "$MODEL" \
+                          https://$API_HOST/api/v1/applications`
    
    echo "Updated Application:"
    echo $rs | jq
    
    # Retrieve it to see the values have changed
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$APP_ID`   
+   rs=`curl -s -X GET -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer $TOKEN" \
+                          https://$API_HOST/api/v1/applications/$APP_ID`
 
    # Check the amendments 
    assertEquals '"http://localhost/login"' $(echo $rs | jq '[.redirects[]] | .[0]')
    
    # Now, try to sign in using the changed password   
-   buildBasic $APP_ID $APP_SECRET
+   BASIC=$(buildBasic $APP_ID $APP_SECRET)
 
-   rs=`curl -s -X POST -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' -H "Authorization: Basic $BASIC" -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD&scope=full" https://$AUTH_HOST/auth/oauth/token`
+   rs=`curl -s -X POST -H 'Accept: application/json' \
+                       -H 'Content-Type: application/x-www-form-urlencoded' \
+                       -H "Authorization: Basic $BASIC" \
+                       -d "grant_type=password&username=$USER_DEMO&password=$USER_PWD_DEMO&scope=full" \
+                           https://$AUTH_HOST/auth/oauth/token`
 
    local TKN=$(echo $rs | jq .access_token | trim)
 
    # As earlier, check we have successfully signed in
-   rs=`curl -s -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer $TKN" https://$API_HOST/api/v1/users`
+   rs=`curl -s -X GET -H "Accept: application/json" \
+                      -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer $TKN" \
+                          https://$API_HOST/api/v1/users`
    
    # Checking the logging has been successful
    assertEquals 0 $(echo $rs | jq .code)
    assertEquals '"demo"' $(echo $rs | jq .name)
    
    # Removing the application
-   rs=`curl -s -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" https://$API_HOST/api/v1/applications/$APP_ID`
+   rs=`curl -s -X DELETE -H 'Accept: application/json' \
+                         -H 'Content-Type: application/json' \
+                         -H "Authorization: Bearer $TOKEN" \
+                             https://$API_HOST/api/v1/applications/$APP_ID`
    echo "Removing: $APP_ID"  
 }
 
