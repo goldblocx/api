@@ -4,7 +4,7 @@ First of all, you need to create your own application and to receive a pair app\
 to generate an OAuth2 token to authenticate your users (see [Authentication](../authentication.md) ).
 
 To start you should perform registration as a user on the Copernicus Gold web application 
-(for testing we use https://testwebnew.copernicusgold.com ) and add a company in it, because all applications
+(for testing we use https://testweb.copernicusgold.com ) and add a company in it, because all applications
 must be linked to a corporate entity.
 
 After completion the registration, you can see the DEV sub-menu item in the header menu of the web application, see the picture below:
