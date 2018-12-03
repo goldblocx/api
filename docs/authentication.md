@@ -85,7 +85,7 @@ to check whether the authentication process has completed or not.
 #### USSD Authentication Completion
 
 For the USSD authentication the user is asked to enter their PIN-code directly on the mobile phone via a USSD dialog.
-You can track the user's roles as mentioned above or there is a way to receive the roles [via websockets](./websockets.md).
+You can track the user's roles as mentioned above or there is a way to receive the roles [via websockets](./websockets/websockets.md).
 The roles will be 'ROLES\_USER` as the user enters the valid PIN.
 
 If the user for some reasons does not receive a USSD request or occasionally closes the USSD dialog, you
