@@ -33,6 +33,6 @@ headers).
 # API Specifications
 
 1. [Application Registration](./docs/applications/registration.md)
-2. [Authentication](./docs/authentication.md)
+2. [Authentication](./docs/authentication.md) and [Registration](./registration.md)
 3. [API Reference](./docs/specification.md)
 4. [API Models](./docs/models/models.md)
