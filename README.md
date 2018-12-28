@@ -15,11 +15,11 @@ with the API queries (see the [Authentication](./docs/authentication.md) section
 
 Currently, we use **https://testapi.copernicusgold.com/api/** as the **test** entry point for all API queries. In the
 production mode the main host should be change to 'api.copernicusgold.com' instead of 'testapi.copernicusgold.com'.
-In all examples here we use the **$API_HOST** variable for substitution of this 'https://testapi.copernicusgold.com' or
+In all examples here we use the **$API_HOST** variable for substitution of this 'https://api.test.copernicusgold.com' or
 'https://api.copernicusgold.com'.
 
 Several API operations connected mostly with the authorization are located on the authorization host.
-In this case we use the **$AUTH_HOST** variable to denote 'https://testauth.copernicusgold.com' and
+In this case we use the **$AUTH_HOST** variable to denote 'https://auth.test.copernicusgold.com' and
 'https://auth.copernicusgold.com' for the test and production authorization server respectively.
 
 All examples of the API here were prepared with *cUrl* utility that can be downloaded from http://curl.haxx.se/download.html
