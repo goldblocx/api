@@ -13,13 +13,13 @@ with the API queries (see the [Authentication](./docs/authentication.md) section
 
 # API Endpoints
 
-Currently, we use **https://testapi.copernicusgold.com/api/** as the **test** entry point for all API queries. In the
-production mode the main host should be change to 'api.copernicusgold.com' instead of 'testapi.copernicusgold.com'.
-In all examples here we use the **$API_HOST** variable for substitution of this 'https://api.test.copernicusgold.com' or
+Currently, we use **https://api.projectdgc.com/api/** as the **test** entry point for all API queries. In the
+production mode the main host should be change to 'api.copernicusgold.com' instead of 'api.projectdgc.com'.
+In all examples here we use the **$API_HOST** variable for substitution of this 'https://api.projectdgc.com' or
 'https://api.copernicusgold.com'.
 
 Several API operations connected mostly with the authorization are located on the authorization host.
-In this case we use the **$AUTH_HOST** variable to denote 'https://auth.test.copernicusgold.com' and
+In this case we use the **$AUTH_HOST** variable to denote 'https://auth.projectdgc.com' and
 'https://auth.copernicusgold.com' for the test and production authorization server respectively.
 
 All examples of the API here were prepared with *cUrl* utility that can be downloaded from http://curl.haxx.se/download.html
@@ -29,6 +29,9 @@ REST API works and all 'curl' commands can be easily converted to any other lang
 API requests should use **https** and provide the content type as JSON (application/json) or XML (application/xml). 
 This depends on the "Accept" and "Content-Type" headers you use. The default type is JSON (if you didn't specify any
 headers).
+
+In some example you may be asked to register via the web application. Please use the following url for **test** environment - 
+https://web.projectdgc.com or https://web.copernicusgold.com for the production stage.
 
 # API Specifications
 
