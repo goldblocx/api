@@ -1,10 +1,12 @@
 # Renewable Energy API
 
-CG as a platform may be used for the tasks of issuance of the currencies backed by electric energy produced
-by some external sources, for example, the renewable energy sources. In this case we operate with special types of currencies
-measured in kilowatt-hours or megawatt-hours. The latter is used by Reneable Energy Certicates (REC).
+CG is a blockchain-based engine used for tokenization of energy, real-time tracking of energy consumption and production,
+as well as generating a verified, immutable energy consumption / production audit trail. Energy consumption and generation
+is measured in kilowatt hours or megawatt hours. CG utilizes data it receives from devices and meters.
+Depending on the client’s preference, excess energy can be either tokenized into a qualifying amount of Renewable
+Energy Certificats (RECs), used for carbon offset, or sold into the Grid. In this abstract, we will lay out the process
+for using CG to convert excess energy into RECs.
 
-For such projects we utilize the data coming from some real devices, meters.
 
 1. [Retrieving Devices](#1-retrieving-devices)
 2. [Loading Transaction for Devices](#2-loading-energy-transactions-for-a-device)
@@ -15,7 +17,8 @@ For such projects we utilize the data coming from some real devices, meters.
 
 ## 1. Retrieving Devices 
 
-From the point of CG all devices are sort of external sources used for issuing electronic assets.
+CG engine recognizes connected data feeding devices as external sources of energy.
+
 
 ### REQUEST:
 ```bash
@@ -71,7 +74,7 @@ curl -X GET -H "Accept: application/json" \
 ]
 ```
 
-Here are the details of not obvious fields:
+Here are the details of the fields:
 
 * **total** - the total number of records returned by this query. This is a common field for most of the responses which
 return arrays.
@@ -156,8 +159,9 @@ curl -X GET -H "Accept: application/json" \
 
 ## 3. Loading Energy Transaction Groupped by Days
 
-From the point of reconciliations there is a need to calculate aggregated transaction reports by days. This allows to see
-how many transactions where loaded per day and which the value was produced.
+In order to perform accurate reconciliation, transaction reports need to be aggregated by date. This allows to see how
+many transactions were loaded per day and the value that was generated.
+
 
 ### REQUEST:
 
@@ -227,7 +231,7 @@ curl -X GET -H "Accept: application/json" \
 
 ## 4. Loading RECs
 
-There is a way to retrieve all renewable energy certificates (REC) belonging to current customer.
+The below request allows to retrieve RECs belonging to a specific customer:
 
 ### REQUEST
 
@@ -276,7 +280,7 @@ curl -X GET -H "Accept: application/json" \
 
 ## 5. Retrieving Transaction for the Given REC
 
-This request allows to check which transactions are included to the given REC.
+The below request allows to view exact transactions that made up each REC:
 
 
 ### REQUEST
@@ -346,10 +350,6 @@ curl -X GET -H "Accept: application/json" \
   [transactions above](#2-loading-energy-transactions-for-a-device).
 
 
-Because a REC is issued after achieving the value of 1 MWh, there can be always the **remainder** - an excessive amount
-of energy that cannot be included to the REC but stayed from the last energy transaction used for building this REC.
-In this case we create a service energy transaction which value is equals to the remainder. Such transactions can be
-seen in this report because they have the block_id field equals to the 'remainder' value.
-  
-Such remainders should not be included in calculation of generated energy because they already belong to a transaction.
-But they can be used for some special reconciliation.
+Due to the fact that one REC is equal to 1 MWh, excess energy units may remain after all the qualifying green energy
+transactions have been converted into RECs. To account for this unused energy, a service energy transaction is created
+with "**remainder**" value of "block_id" field. These “remainder” transactions are used for further RECs issuance.
