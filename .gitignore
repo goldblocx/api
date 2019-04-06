@@ -6,3 +6,4 @@
 .classpath
 *.log
 /shunit2-source/
+/.idea/
