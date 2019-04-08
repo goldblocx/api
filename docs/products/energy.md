@@ -139,7 +139,8 @@ curl -X GET -H "Accept: application/json" \
         },
         "state": "Processed",
         "state_changed": "2019-03-15T16:21:47.170+0000",
-        "value": 0.012312
+        "value": 0.012312,
+        "remainder": 0.001200
     },
     ...
 ]
@@ -155,9 +156,11 @@ curl -X GET -H "Accept: application/json" \
 * **state** - the state of the transaction. It can be 'New' (just registered), 'Pending' (expects a confirmation from the blockchain network),
   'Processed' (a confirmation has been received, the transaction has been placed to the blockchain) 
 * **value** - the measured value in MWh
+* **remainder** - the remainder of the value when the transaction is unable to be fully included to a REC. Please 
+[see the REC sections for details](#5-retrieving-transaction-for-the-given-rec).
 
 
-## 3. Loading Energy Transaction Groupped by Days
+## 3. Loading Energy Transaction Grouped by Days
 
 In order to perform accurate reconciliation, transaction reports need to be aggregated by date. This allows to see how
 many transactions were loaded per day and the value that was generated.
