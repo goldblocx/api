@@ -337,7 +337,8 @@ curl -X GET -H "Accept: application/json" \
             "modified": "2019-04-01T06:15:48.518+0000",
             "state": "Processed",
             "state_changed": "2019-03-27T23:24:31.022+0000",
-            "value": 0.01229
+            "value": 0.01229,
+            "remainder": 0.004456
         },
         
         ...
@@ -349,7 +350,7 @@ curl -X GET -H "Accept: application/json" \
 * **transactions** - a list of energy transactions which are included to the REC. The fields are the same as described for
   [transactions above](#2-loading-energy-transactions-for-a-device).
 
-
 Due to the fact that one REC is equal to 1 MWh, excess energy units may remain after all the qualifying green energy
 transactions have been converted into RECs. To account for this unused energy, a service energy transaction is created
-with "**remainder**" value of "block_id" field. These “remainder” transactions are used for further RECs issuance.
+with "**remainder**" value of "block_id" field. These “remainder” transactions are used for further RECs issuance. Also,
+you can see the "remainder" field in the last transaction used in the REC accumulation.
