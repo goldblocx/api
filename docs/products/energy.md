@@ -267,7 +267,18 @@ curl -X GET -H "Accept: application/json" \
         "state": "Processed",
         "state_changed": "2019-03-14T07:56:26.701+0000",
         "total": 125,
-        "value": 1.0
+        "value": 1.0,
+        "sources": [ {
+              "id": 49912057,
+              "created": "2019-02-20T17:17:42.106+0000",
+              "modified": "2019-04-05T03:16:49.747+0000",
+              "name": "Hill Valley Site - Revenue Meter",
+              "external_id": "5c38b26915d03d01774f0921",
+              "node_type": "meter",
+              "state": "active",
+              "type": "solar"
+          }
+        ]
     },
     
     ...
@@ -280,6 +291,7 @@ curl -X GET -H "Accept: application/json" \
 * **state** - the state of the REC. It can be 'New' (just created), 'Pending' (expecting a confirmation from the blockchain),
   'Processed' (the confirmation received)
 * **value** - the nominee value of the REC (1 MWh usually)
+* **sources** - a list of the devices where the REC was generated
 
 ## 5. Retrieving Transaction for the Given REC
 
@@ -317,6 +329,18 @@ curl -X GET -H "Accept: application/json" \
     "modified": "2019-04-01T06:18:38.041+0000",
     "state": "Processed",
     "state_changed": "2019-04-01T06:18:37.894+0000",
+    "sources": [ {
+          "id": 49912057,
+          "created": "2019-02-20T17:17:42.106+0000",
+          "modified": "2019-04-05T03:16:49.747+0000",
+          "name": "Hill Valley Site - Revenue Meter",
+          "external_id": "5c38b26915d03d01774f0921",
+          "node_type": "meter",
+          "state": "active",
+          "type": "solar"
+      }
+    ],
+
     "transactions": [
         {
             "block_id": "remainder",
@@ -349,7 +373,7 @@ curl -X GET -H "Accept: application/json" \
 }
 ```
 
-* The fields **hash**, **height**, **state** have the same meaning as in [the previous request](#4-loading-recs).
+* The fields **hash**, **height**, **state**, **sources** have the same meaning as in [the previous request](#4-loading-recs).
 * **transactions** - a list of energy transactions which are included to the REC. The fields are the same as described for
   [transactions above](#2-loading-energy-transactions-for-a-device).
 
