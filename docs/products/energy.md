@@ -13,6 +13,7 @@ for using CG to convert excess energy into RECs.
 3. [Daily Aggregations for Transactions](#3-loading-energy-transaction-groupped-by-days)
 4. [Loading RECs](#4-loading-recs)
 5. [List of Transactions for a REC](#5-retrieving-transaction-for-the-given-rec)
+6. [Loading RECs by a device](#6-loading-recs-by-a-device)
 
 
 ## 1. Retrieving Devices 
@@ -381,3 +382,60 @@ Due to the fact that one REC is equal to 1 MWh, excess energy units may remain a
 transactions have been converted into RECs. To account for this unused energy, a service energy transaction is created
 with "**remainder**" value of "block_id" field. These “remainder” transactions are used for further RECs issuance. Also,
 you can see the "remainder" field in the last transaction used in the REC accumulation.
+
+
+## 6. Loading RECs by a device
+
+The below request allows to retrieve RECs of a concrete device
+
+### REQUEST
+
+```bash
+GET 'api/v1/energy/recs/devices/{deviceId}?page=...&per_page=...'
+```
+
+### ARGUMENTS
+
+* **deviceId** The ID of the device, e.g. '5c38b26915d03d01774f0921'
+* **page** - the number of the page to retrieve
+* **per_page** - the number of items per page
+
+### EXAMPLE
+
+```bash
+curl -X GET -H "Accept: application/json" \
+            -H "Authorization: Bearer $TOKEN" $API_HOST/api/v1/energy/recs/devices/5c38b26915d03d01774f0921?page=0&per_page=25
+```
+
+### RESPONSE
+
+```json
+[
+    {
+        "created": "2019-03-14T07:56:09.822+0000",
+        "hash": "27e4e77394541517491572dc444d6f913e3d0147f57314d9218c7c92305d027c",
+        "height": 2041754,
+        "id": 51647908,
+        "modified": "2019-03-14T07:56:26.708+0000",
+        "state": "Processed",
+        "state_changed": "2019-03-14T07:56:26.701+0000",
+        "total": 125,
+        "value": 1.0,
+        "sources": [ {
+              "id": 49912057,
+              "created": "2019-02-20T17:17:42.106+0000",
+              "modified": "2019-04-05T03:16:49.747+0000",
+              "name": "Hill Valley Site - Revenue Meter",
+              "external_id": "5c38b26915d03d01774f0921",
+              "node_type": "meter",
+              "state": "active",
+              "type": "solar"
+          }
+        ]
+    },
+    
+    ...
+]
+```
+
+The fields are the same as for [the previous request](#4-loading-recs).
