@@ -1,7 +1,7 @@
 # Messaging Concept
 
 Messaging is a part of the System which allows users to communicate with the service provider. Currently, we support
-communication (in the form of a chat) with the Copernicus Gold technical support.
+communication (in the form of a chat) with the technical support.
 
 1. [Getting a number of unread messages](#getting-a-number-of-unread-messages)
 2. [Retrieving Messages](#retrieving-messages)

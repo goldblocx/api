@@ -3,8 +3,8 @@
 Assets represent some values which can be stored in the system. Those can be currencies like US dollar or euro, but
 at the same time assets depict a more wide class of values: gold, silver, oil, bitcoin or others.
 
-Originally, Copernicus Gold has two categories of assets: gold-linked currency (or electronic gold) and common fiat currencies.
-The fiat currencies can be currently: USD, EUR, SGD (Singapore Dollar). In the nearest future the number of the currencies
+Originally, the platform has two categories of assets: pool allocated previous metals and common fiat currencies.
+The fiat currencies can be currently: USD, SGD (Singaporean Dollar). In the nearest future the number of the currencies
 will be increased. For additional details on asset objects please refer to [the asset model](../models/asset.md).
 
 You can open accounts using these standard assets, send such currencies between your clients (using 
@@ -38,7 +38,7 @@ To create an asset you need to provide its code, the description and the scale.
 ```
 
     The field 'scale' means how many fraction digits should have the asset. For example, it must be set 2 for US Dollar
-    or it is set 5 for the Copernicus Gold gold-linked currency.
+    or it is set 5 for precious metals.
 
 ### EXAMPLE
 

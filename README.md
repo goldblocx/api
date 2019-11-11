@@ -3,9 +3,9 @@
 # General Information
 
 Here we provide the information about the Application Programming Interface (API)
-for [Copernicus Gold (**CG**)](https://www.copernicusgold.com) services which enables you to create applications, register users,
-open accounts (wallets), replenish them, send funds to other people, organizations and even to create own
-digital assets.
+for [Goldblocx (**GLBX**)](https://www.goldblocx.com) services which enables you to create applications, register users,
+open accounts (wallets) in previous metals and currencies, replenish them, trade previous metals, create accounts for
+organizations and use the Goldblocx platform as White Label solution.
 
 
 We use the OAuth2 authentication schema that means you need an access token to work
@@ -16,11 +16,11 @@ with the API queries (see the [Authentication](./docs/authentication.md) section
 Currently, we use **https://api.projectdgc.com/api/** as the **test** entry point for all API queries. In the
 production mode the main host should be change to 'api.copernicusgold.com' instead of 'api.projectdgc.com'.
 In all examples here we use the **$API_HOST** variable for substitution of this 'https://api.projectdgc.com' or
-'https://api.copernicusgold.com'.
+'https://api.goldplusassets.com'.
 
 Several API operations connected mostly with the authorization are located on the authorization host.
 In this case we use the **$AUTH_HOST** variable to denote 'https://auth.projectdgc.com' and
-'https://auth.copernicusgold.com' for the test and production authorization server respectively.
+'https://auth.goldplusassets.com' for the test and production authorization server respectively.
 
 All examples of the API here were prepared with *cUrl* utility that can be downloaded from http://curl.haxx.se/download.html
 and usually is installed on most of OS platforms. The main reason to use it is to provide a clear way how exactly our
@@ -31,7 +31,8 @@ This depends on the "Accept" and "Content-Type" headers you use. The default typ
 headers).
 
 In some example you may be asked to register via the web application. Please use the following url for **test** environment - 
-https://web.projectdgc.com or https://web.copernicusgold.com for the production stage.
+https://gpa.projectdgc.com or https://web.goldplusassets.com for the production stage or use the mobile applications
+from www.goldblocx.com.
 
 # API Specifications
 
@@ -39,3 +40,5 @@ https://web.projectdgc.com or https://web.copernicusgold.com for the production 
 2. [Authentication](./docs/authentication.md) and [Registration](./docs/registration.md)
 3. [API Reference](./docs/specification.md)
 4. [API Models](./docs/models/models.md)
+
+**Goldblocx** is a trademark of GoldPlus Assets Pte. Ltd.

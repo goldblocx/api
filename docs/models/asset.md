@@ -1,6 +1,6 @@
 # Asset Model (Currency)
 
-One of the most exiting feature of the Copernicus Gold platform is its ability to issue own electronic
+One of the most exiting feature of the platform is its ability to issue own electronic
 assets. They can be linked to some real value like gold, silver, other precious metals, also, US dollar, Euro
 in a bank. At the same time you can issue you own asset and manage it. All functions from our high-level API
 will be automatically available for any kind of assets.

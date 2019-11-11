@@ -3,8 +3,8 @@
 First of all, you need to create your own application and to receive a pair app\_id/app\_secret. This pair will be used
 to generate an OAuth2 token to authenticate your users (see [Authentication](../authentication.md) ).
 
-To start you should perform registration as a user on the Copernicus Gold web application 
-(for testing we use https://web.projectdgc.com), then register a company (see 'Add Business User' menu),
+To start you should perform registration as a user on the web application 
+(for testing we use https://gpa.projectdgc.com), then register a company (see 'Add Business User' menu),
 because all applications must be linked to a corporate entity.
 
 After completion the registration, you can see the DEV sub-menu item in the header menu of the web application,

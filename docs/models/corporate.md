@@ -7,9 +7,9 @@ the registration date, the legal address, the business activity, etc.
 {
     "business_category": { ... },
     "business_sub_category": { ... },
-    "email": "welcome@copernicusgold.com",
+    "email": "welcome@goldblocx.com",
     "id": 1234567,
-    "name": "Copernicus Gold Singapore",
+    "name": "GoldPlus Assets Pte. Ltd.",
     "owner_id": 1234567,
     "registration_address": { ... },
     "registration_date": "2016-06-26T00:00:00.000+0000",

@@ -1,6 +1,6 @@
 # Application Concept
 
-Applications are a way to build your own services using Copernicus Gold and its abilities to store and to carry out
+Applications are a way to build your own services using the platform and its abilities to store and to carry out
 financial transactions using different electronic assets including those you create for your own aims.
 
 1. [Creating a new application](#creating-new-application)

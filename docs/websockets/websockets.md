@@ -16,7 +16,7 @@ The result will be something like that:
 This JWT token can be used to create new subscriptions on the websocket server.
 Let's denote the websocket as $WS_HOST variable.
 
-For the test stage, WS_HOST=https://ws.projectdgc.com/ws, for the production: https://ws.copernicusgold.com/ws 
+For the test stage, WS_HOST=https://ws.projectdgc.com/ws, for the production: https://ws.goldplusassets.com/ws 
 
 After establishing a new connection to the websocket server, you can subscribe on some topics providing
 the JWT token in the 'jwt' header.

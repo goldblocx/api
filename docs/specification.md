@@ -1,6 +1,6 @@
 # Introduction
 
-Copernicus Gold provides a very simple REST API to integrate its power to your own business application. 
+Goldblocx provides a very simple REST API to integrate its power to your own business application. 
 This Reference Guide gives you the information about all available resources and endpoints.
 
 ## Using Access Token
@@ -48,4 +48,4 @@ determine an concrete error.
 7. [Creating Own Applications](./applications/applications.md)
     1. [Setting Own Fees](./applications/fees.md)
     2. [Creating Assets/Currencies](./applications/own_assets.md)
-8. [Renewable Energy API](./products/energy.md)
+8. [Precious Metals Valuation API](./products/preciousmetals.md)

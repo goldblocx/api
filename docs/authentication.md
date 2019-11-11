@@ -1,15 +1,15 @@
 # General Concept
 
-The authentication procedure in CG is based on [OAuth 2 protocol](https://tools.ietf.org/html/rfc6749) and
+The authentication procedure is based on [OAuth 2 protocol](https://tools.ietf.org/html/rfc6749) and
 provides two main abilities to obtain an access token: *the authorization code flow* (mostly used for web applications)
 and *the resource password flow* (usually used in the applications which are unable to work with html view, for instance,
 mobile applications).
 
 First of all, you need app\_id and app\_secret values which are unique for your application. If you have a corporate
-account in CG, you can create your [own CG application](./applications/registration.md) and get
+account in the system, you can create your [own application](./applications/registration.md) and get
 a pair app\_id/app\_secret.
 
-The CG's authentication cycle has one principal distinction from other applications: the authentication is based on
+The authentication cycle has one principal distinction from other applications: the authentication is based on
 usage of USSD or SMS services which interact with your final user as a secondary authentication factor.
 
 *Please be aware the USSD channel may not operate for some regions or cellular carriers. In this case please
@@ -119,7 +119,7 @@ Please notify the user that the number of wrong OTP/PIN attempts is limited (see
 
 The main difference between this flow and the previous one is absence of interaction inside of a browser. This
 approach can be applied not only for mobile applications but also for any integrated solutions that use some
-embedded pieces of the CG platform. 
+embedded pieces of the platform. 
 
 The authentication procedure starts with requesting an OTP:
 
@@ -134,8 +134,8 @@ curl -X PUT -d "$MODEL"  $AUTH_HOST/auth/api/v1/otp
 
 The 'login' field requires the mobile phone number of the user. The 'auth\_channel' may have two possible
 values: SMS or USSD. The last parameter - 'client\_id' is used when you need to receive SMS/USSD messages
-specific to your applications. For example, instead of the standard SMS title of CG applications,e.g.
-'Copernicus Gold: OTP #54: 9618' you may change to 'My Great Application: OTP #54: 9618'.
+specific to your applications. For example, instead of the standard SMS title of applications,e.g.
+'Goldblocx: OTP #54: 9618' you may change to 'My Great Application: OTP #54: 9618'.
 
 The 'client\_id' attribute means here the identifier of your application. Please refer to
 the [application section](./applications/applications.md) and [provider section](./models/provider.md)

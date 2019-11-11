@@ -3,7 +3,7 @@
 Financial transactions are the most important part of the system. They can be used to move any kind of assets
 between accounts or to convert one type of asset to another.
 
-Because Copernicus Gold is based on the blockchain technology the real movement of assets is performed inside of
+Because Goldblocx is based on the blockchain technology the real movement of assets is performed inside of
 our private blockchains. These blockchains act like a core banking system and carry out all ledger entries occurring
 for the transactions (Yeah, each transaction may generate several ledger entries).
 

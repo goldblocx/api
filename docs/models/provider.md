@@ -13,7 +13,7 @@ The provider's fields:
     "created": "2016-10-26T20:06:11.161+0000",
     "customer": { ... },
     "id": 1234567,
-    "name": "Copernicus Gold"
+    "name": "Goldblocx"
 }
 ```
 

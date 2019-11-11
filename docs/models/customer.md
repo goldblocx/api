@@ -11,7 +11,7 @@ Below are provided the fields of the customer object:
     "id": 1234567
     "state": "Active",
     
-    "name": "Copernicus Gold Singapore",
+    "name": "GoldPlus Assets Pte. Ltd.",
     "type": "Corporate",
     "compliance_state": "Passed",
     "kind": "Organization" 
