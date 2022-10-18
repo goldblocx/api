@@ -1,6 +1,6 @@
 # Exchange Rates
 
-This operation allows calculating amounts with uthe se the current exchange rates.
+This operation allows calculating amounts with the use of the current exchange rates.
 
 Provides the exchange rate, converted amounts for some parameters of the exchange deal.
 In the body of the request you should provide a currency code (the asset's identifier)

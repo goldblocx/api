@@ -116,4 +116,3 @@ Most of the objects have some standard attributes like 'id', 'created', 'modifie
     2. [Creating Assets/Currencies](./applications/own_assets.md)
     3. [Service Providers](./applications/providers.md)
 8. [All Models and Tools](./models/models.md)
-8. [Precious Metals](./products/preciousmetals.md)
