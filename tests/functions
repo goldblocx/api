@@ -9,8 +9,8 @@ export USER_DEMO='79999999999'
 export USER_PWD_DEMO='1234'
 
 # Test endpoints
-export API_HOST=api.projectdgc.com
-export AUTH_HOST=auth.projectdgc.com
+export API_HOST=api.test.goldblocx.com
+export AUTH_HOST=auth.test.goldblocx.com
 
 #
 # Generating a value for Basic Authorization header
@@ -20,12 +20,12 @@ export AUTH_HOST=auth.projectdgc.com
 function buildBasic() {
 
    if [ -z $1 ]; then
-	echo "APP_ID not specified"
-	exit 1
+	    echo "APP_ID not specified"
+	    exit 1
    fi
    if [ -z $2 ]; then
-        echo "APP_SECRET not specified"
-        exit 1
+      echo "APP_SECRET not specified"
+      exit 1
    fi
 
    unamestr=`uname`

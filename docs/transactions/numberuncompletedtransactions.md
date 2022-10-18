@@ -1,20 +1,22 @@
-# Number of Uncompleted transactions
+# Number of Draft Transactions
 
-Returns a number of **uncompleted** transactions for the current customer.
+Returns a number of **uncompleted** (Draft) transactions for the current customer.
 
 ### REQUEST:
+
 ```
     GET     /api/v1/transactions/notcompleted/count
 ```
-### ARGUMENTS:
-       none
+
 ### EXAMPLE:
 
 ```bash
 curl -X GET -H "Accept: application/json" \
-            -H "Authorization: Bearer $TOKEN" $API_HOST/api/v1/transactions/notcompleted/count
+            -H "Authorization: Bearer $TOKEN" \
+            $API_HOST/api/v1/transactions/notcompleted/count
 ```
-### RESPONSE:
+
+### EXAMPLE of RESPONSE:
 
 ```
 2
