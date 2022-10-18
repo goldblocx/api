@@ -1,17 +1,15 @@
 # Transactions
 
-Financial transactions are the most important part of the system. They can be used to move any kind of assets
-between accounts or to convert one type of asset to another.
+Financial transactions are the most important part of the system. They can be used
+to move any kind of assets between accounts or to convert one type of asset to another.
 
-Because Goldblocx is based on the blockchain technology the real movement of assets is performed inside of
-our private blockchains. These blockchains act like a core banking system and carry out all ledger entries occurring
-for the transactions (Yeah, each transaction may generate several ledger entries).
+The platform uses its own ledger for storing ledger entries of each transaction.
 
-After completion the transaction has a special attribute 'hash' which represents the hash value of the linked
-blockchain transaction. 
+After completion the transaction has a special attribute 'hash' which represents
+the hash value of the linked ledger transaction.
 
-Here below, we provide a list of operations which allow to create, modify and approve transactions of different
-types.
+Here below, we provide a list of operations which allow to create, modify and approve
+transactions of different types.
 
 - [Completed Transactions](./completedtransactions.md)
 - [Unconfirmed Transactions, drafts](./uncompletedtransactions.md)

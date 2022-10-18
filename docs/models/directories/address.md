@@ -2,13 +2,16 @@
 
 The address is the location of individual or corporate entities.
 
-```
+```json
 {
-    "address": "1 George Street, Tower B, #10-01",
-    "city": "Singapore",
-    "country": { ... },
-    "postal_code": "049145",
-    "type": "Legal"
+  "address": "1 George Street, Tower B, #10-01" ,
+  "city": "Singapore" ,
+  "country": {
+    "value": "SG" ,
+    "description": "Singapore"
+  } ,
+  "postal_code": "049145" ,
+  "type": "Legal"
 }
 ```
 
@@ -32,4 +35,4 @@ The postal code of the address.
 
 ### type
 
-The type of the address. Currently, we support just one value: 'Legal'.
+The type of the address. Supported values: 'Legal', 'Actual', 'Shipment'

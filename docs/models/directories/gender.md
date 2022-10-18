@@ -2,19 +2,21 @@
 
 The directory has the structure:
 
-```
-[{
-    "description": "Male",
+```json
+[
+  {
+    "description": "Male" ,
     "value": "Male"
-},
-{
-    "description": "Female",
+  } ,
+  {
+    "description": "Female" ,
     "value": "Female"
-}]
+  }
+]
 ```
 
 The values can be obtained with use of this endpoint:
 
-```
-    curl -x GET -H "Authorization: Bearer $TOKEN"  $API_HOST/api/v1/genders
+```bash
+curl -x GET -H "Authorization: Bearer $TOKEN"  $API_HOST/api/v1/genders
 ```

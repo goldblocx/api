@@ -2,20 +2,20 @@
 
 This directory gives a list of possible type of identification documents:
 
-```
+```json
 [
-    {
-        "description": "Passport",
-        "value": "Passport"
-    },
-    {
-        "description": "Employment Pass",
-        "value": "EmploymentPass"
-    },
-    {
-        "description": "NRIC",
-        "value": "NRIC"
-    }
+  {
+    "description": "Passport" ,
+    "value": "Passport"
+  } ,
+  {
+    "description": "Employment Pass" ,
+    "value": "EmploymentPass"
+  } ,
+  {
+    "description": "NRIC" ,
+    "value": "NRIC"
+  }
 ]
 ```
 
@@ -29,6 +29,6 @@ The readable description of the document.
 
 In order to obtain the list of the documents please use the endpoint:
 
-```
-    curl -x GET -H "Authorization: Bearer $TOKEN"  $API_HOST/api/v1/docuemnts/types
+```bash
+curl -x GET -H "Authorization: Bearer $TOKEN"  $API_HOST/api/v1/documents/types
 ```

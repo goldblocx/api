@@ -35,7 +35,6 @@ testAuthentication() {
                            https://$AUTH_HOST/auth/oauth/token`
 
    # Will be returned something like this:
-
    # {  "access_token":"9660fd9f-2e3b-46dd-9828-86eadf783b5e",
    #    "token_type":"bearer",
    #    "refresh_token":"8cfe1111-6fc7-4cea-9640-03b66208ba7a",
